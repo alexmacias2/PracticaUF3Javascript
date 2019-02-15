@@ -16,6 +16,10 @@ input {
 .col-xs-3 {
 margin: 1em;
 }
+form{
+    border:1px solid cadetblue;
+    padding: 1em;
+}
 #formError{
  font-size: 1.2em;
  color: red;
