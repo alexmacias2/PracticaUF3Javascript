@@ -25,7 +25,6 @@ function paginaCargada() {
             var btnBorrarFormulario = document.createElement('button');
             btnBorrarFormulario.setAttribute('class', 'btn btn-primary');
             var tituloFormulario = document.createElement('h5');
-            var contenidoEditar = document.createTextNode('Editar Formulario');
             var contenidoBorrar = document.createTextNode('Borrar Formulario');
             var contenidoTitulo = document.createTextNode(nombreFormulario.value);
 
@@ -48,17 +47,17 @@ function paginaCargada() {
         } else {
             errorSpan.innerHTML = "El nombre del formulario debe empezar por 3 o más letras seguidas de uno o más números"; // plain javascript            
         }
-        
-          function llenarForm() {
+
+        function llenarForm() {
             var inputCantidad = document.createElement('input');
             inputCantidad.setAttribute('placeholder', 'inserta cantidad de elementos');
             inputCantidad.setAttribute('type', 'number');
-            inputCantidad.setAttribute('id', tituloFormulario.id + '-cantidad');
+            inputCantidad.setAttribute('id', tituloFormulario.innerHTML + '-cantidad');
             inputCantidad.setAttribute('class', 'form-control');
             var btnCrearCampos = document.createElement('button');
             btnCrearCampos.appendChild(document.createTextNode("Crear Campos"));
             btnCrearCampos.setAttribute('type', 'button');
-            btnCrearCampos.setAttribute('id', tituloFormulario.id + '-btnCrearCampo');
+            btnCrearCampos.setAttribute('id', tituloFormulario.innerHTML + '-btnCrearCampo');
 
             form.appendChild(inputCantidad);
             form.appendChild(btnCrearCampos);
@@ -73,9 +72,36 @@ function paginaCargada() {
 
         function creaCampos() {
             var idBoton = this.id.split('-', 2);
-            alert(document.getElementById(idBoton[0] + '-' + 'cantidad').value);
-            
+            var cantidad = document.getElementById(idBoton[0] + '-' + 'cantidad').value;
+
+
+            for (var i = 0; i < cantidad; i++) {
+                var select = document.createElement('select');
+                select.setAttribute('id', this.id + '-select1');
+                var input= document.createElement('option');
+                var contenidoInput = document.createTextNode('input');
+                input.appendChild(contenidoInput);
+                var button= document.createElement('option');
+                var contenidoButton = document.createTextNode('button');
+                button.appendChild(contenidoButton);
+                var selection= document.createElement('option');
+                var contenidoSelection = document.createTextNode('Selection');
+                selection.appendChild(contenidoSelection);
+                var check= document.createElement('option');
+                var contenidoCheck = document.createTextNode('checkBox');
+                check.appendChild(contenidoCheck);
+                var radiobutton= document.createElement('option');
+                var contenidoRadio = document.createTextNode('RadioButton');
+                radiobutton.appendChild(contenidoRadio);
+                select.appendChild(input);
+                select.appendChild(button);
+                select.appendChild(selection);
+                select.appendChild(check);
+                select.appendChild(radiobutton);
+                form.appendChild(select);
+            }
+
         }
 
     }
-    }
+}
