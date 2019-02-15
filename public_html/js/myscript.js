@@ -73,11 +73,14 @@ function paginaCargada() {
         function creaCampos() {
             var idBoton = this.id.split('-', 2);
             var cantidad = document.getElementById(idBoton[0] + '-' + 'cantidad').value;
+            document.getElementById(idBoton[0] + '-' + 'cantidad').style.display = 'none';
+            document.getElementById(this.id).style.display = 'none';
+            
 
 
             for (var i = 0; i < cantidad; i++) {
                 var select = document.createElement('select');
-                select.setAttribute('id', this.id + '-select1');
+                select.setAttribute('id', idBoton[0] + '-select'+i);
                 var input= document.createElement('option');
                 var contenidoInput = document.createTextNode('input');
                 input.appendChild(contenidoInput);
