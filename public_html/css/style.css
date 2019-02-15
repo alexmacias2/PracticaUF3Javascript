@@ -4,11 +4,7 @@ input {
 .btn-primary {
     margin-bottom: 1em;
 }
-#contenedor{
-    display:flex;
-    flex-direction: column;
-    
-}
+
 
 #principal{
     margin-left: 35%;
