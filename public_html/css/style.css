@@ -9,10 +9,23 @@ input {
     flex-direction: column;
     
 }
+
+#principal{
+    margin-left: 35%;
+}
 .col-xs-3 {
 margin: 1em;
 }
 #formError{
  font-size: 1.2em;
  color: red;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: gainsboro;
+  color: black;
+  text-align: center;
 }
