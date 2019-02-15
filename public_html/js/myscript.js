@@ -75,33 +75,56 @@ function paginaCargada() {
             var cantidad = document.getElementById(idBoton[0] + '-' + 'cantidad').value;
             document.getElementById(idBoton[0] + '-' + 'cantidad').style.display = 'none';
             document.getElementById(this.id).style.display = 'none';
-            
-
 
             for (var i = 0; i < cantidad; i++) {
                 var select = document.createElement('select');
-                select.setAttribute('id', idBoton[0] + '-select'+i);
-                var input= document.createElement('option');
+                select.setAttribute('id', idBoton[0] + '-select' + i);
+                select.addEventListener('change', diseñaCampo);
+                var selecciona = document.createElement('option');
+                var contenidoSelecciona = document.createTextNode('Selecciona una...');
+                selecciona.appendChild(contenidoSelecciona);
+                var input = document.createElement('option');
                 var contenidoInput = document.createTextNode('input');
                 input.appendChild(contenidoInput);
-                var button= document.createElement('option');
+                var button = document.createElement('option');
                 var contenidoButton = document.createTextNode('button');
                 button.appendChild(contenidoButton);
-                var selection= document.createElement('option');
+                var selection = document.createElement('option');
                 var contenidoSelection = document.createTextNode('Selection');
                 selection.appendChild(contenidoSelection);
-                var check= document.createElement('option');
+                var check = document.createElement('option');
                 var contenidoCheck = document.createTextNode('checkBox');
                 check.appendChild(contenidoCheck);
-                var radiobutton= document.createElement('option');
+                var radiobutton = document.createElement('option');
                 var contenidoRadio = document.createTextNode('RadioButton');
                 radiobutton.appendChild(contenidoRadio);
+                select.appendChild(selecciona);
                 select.appendChild(input);
                 select.appendChild(button);
                 select.appendChild(selection);
                 select.appendChild(check);
                 select.appendChild(radiobutton);
                 form.appendChild(select);
+            }
+        }
+
+        function diseñaCampo() {
+            switch (document.getElementById(this.id).value) {
+                case 'button':
+                    alert('button');
+                    break;
+                case 'input':
+                    alert('input');
+                    break;
+                case 'Selection':
+                    alert('Selection');
+                    break;
+                case 'checkBox':
+                    alert('checkBox');
+                    break;
+                case 'RadioButton':
+                    alert('RadioButton');
+                    break;
             }
 
         }
