@@ -109,35 +109,61 @@ function paginaCargada() {
         }
 
         function diseñaCampo() {
+
             switch (document.getElementById(this.id).value) {
                 case 'button':
                     form.removeChild(document.getElementById(this.id));
-                    var textoBtn= prompt("Inserta texto del botón","");
-                    var boton= document.createElement('button');
-                    boton.setAttribute("id",tituloFormulario.innerHTML+"-btn1");
-                    boton.setAttribute("type","button");
+                    var textoBtn = prompt("Inserta texto del botón", "");
+                    var boton = document.createElement('button');
+                    boton.setAttribute("id", tituloFormulario.innerHTML + "-btn1");
+                    boton.setAttribute("type", "button");
                     boton.appendChild(document.createTextNode(textoBtn));
+                    var btnBorrarElemento = document.createElement('button');
+                    btnBorrarElemento.addEventListener('click', function () {
+                        form.removeChild(boton);
+                        btnBorrarElemento.style.display = 'none';
+                    });
+                    btnBorrarElemento.setAttribute('type', 'button');
+                    btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
                     form.appendChild(boton);
+                    form.appendChild(btnBorrarElemento);
+
                     break;
                 case 'input':
                     form.removeChild(document.getElementById(this.id));
                     var input = document.createElement("input");
-                    input.setAttribute("id",tituloFormulario.innerHTML+"-input");
-                    input.setAttribute("placeholder","texto por defecto");
+                    input.setAttribute("id", tituloFormulario.innerHTML + "-input");
+                    input.setAttribute("placeholder", "texto por defecto");
+                    var btnBorrarElemento = document.createElement('button');
+                    btnBorrarElemento.addEventListener('click', function () {
+                        form.removeChild(input);
+                        btnBorrarElemento.style.display = 'none';
+                    });
+                    btnBorrarElemento.setAttribute('type', 'button');
+                    btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
                     form.appendChild(input);
+                    form.appendChild(btnBorrarElemento);
                     break;
                 case 'Selection':
-                   form.removeChild(document.getElementById(this.id));
-                    var opciones= prompt('Cuantas opciones necesitas?','');
+                    form.removeChild(document.getElementById(this.id));
+                    var opciones = prompt('Cuantas opciones necesitas?', '');
                     var select = document.createElement('select');
                     for (var i = 0; i < parseInt(opciones); i++) {
-                        var textoOpcion= prompt('Introduce opcion:','');
-                        
-                        var opcion= document.createElement('option');
+                        var textoOpcion = prompt('Introduce opcion:', '');
+
+                        var opcion = document.createElement('option');
                         opcion.appendChild(document.createTextNode(textoOpcion));
                         select.appendChild(opcion);
                     }
+                    var btnBorrarElemento = document.createElement('button');
+                    btnBorrarElemento.addEventListener('click', function () {
+                        form.removeChild(select);
+                        btnBorrarElemento.style.display = 'none';
+                    });
+                    btnBorrarElemento.setAttribute('type', 'button');
+                    btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
                     form.appendChild(select);
+                    form.appendChild(btnBorrarElemento);
                     break;
                 case 'checkBox':
                     form.removeChild(document.getElementById(this.id));
@@ -145,16 +171,25 @@ function paginaCargada() {
                     var div = document.createElement("div");
                     for (var i = 0; i < parseInt(cantidad); i++) {
                         var check = document.createElement("input");
-                        check.setAttribute("type","checkbox");
+                        check.setAttribute("type", "checkbox");
                         div.appendChild(check);
-                        var textoCheck = prompt("inserta texto1","");
+                        var textoCheck = prompt("inserta texto1", "");
                         var span = document.createElement("span");
                         span.appendChild(document.createTextNode(textoCheck));
                         div.appendChild(span);
-                        
+                        var saltoLinea = document.createElement("br");
+                        div.appendChild(saltoLinea);
                     }
-                    div.setAttribute("id",tituloFormulario.innerHTML+"-"+"divCheck");
+                    var btnBorrarElemento = document.createElement('button');
+                    btnBorrarElemento.addEventListener('click', function () {
+                        form.removeChild(div);
+                        btnBorrarElemento.style.display = 'none';
+                    });
+                    btnBorrarElemento.setAttribute('type', 'button');
+                    btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
+                    div.setAttribute("id", tituloFormulario.innerHTML + "-" + "divCheck");
                     form.appendChild(div);
+                    form.appendChild(btnBorrarElemento);
                     break;
                 case 'RadioButton':
                     form.removeChild(document.getElementById(this.id));
@@ -162,17 +197,27 @@ function paginaCargada() {
                     var div = document.createElement("div");
                     for (var i = 0; i < parseInt(cantidad); i++) {
                         var radio = document.createElement("input");
-                        radio.setAttribute("type","radio");
-                        radio.setAttribute("name","prueba");
+                        radio.setAttribute("type", "radio");
+                        radio.setAttribute("name", "prueba");
                         div.appendChild(radio);
-                        var textoRadio = prompt("inserta texto1","");
+                        var textoRadio = prompt("inserta texto1", "");
                         var span = document.createElement("span");
                         span.appendChild(document.createTextNode(textoRadio));
                         div.appendChild(span);
-                        
+                        var saltoLinea = document.createElement("br");
+                        div.appendChild(saltoLinea);
                     }
-                    div.setAttribute("id",tituloFormulario.innerHTML+"-"+"divRadio");
+                    var btnBorrarElemento = document.createElement('button');
+                    btnBorrarElemento.addEventListener('click', function () {
+                        form.removeChild(div);
+                        btnBorrarElemento.style.display = 'none';
+                    });
+                    btnBorrarElemento.setAttribute('type', 'button');
+                    btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
+                    div.setAttribute("id", tituloFormulario.innerHTML + "-" + "divCheck");
+                    div.setAttribute("id", tituloFormulario.innerHTML + "-" + "divRadio");
                     form.appendChild(div);
+                    form.appendChild(btnBorrarElemento);
                     break;
             }
 
