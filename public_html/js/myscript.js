@@ -111,19 +111,68 @@ function paginaCargada() {
         function diseñaCampo() {
             switch (document.getElementById(this.id).value) {
                 case 'button':
-                    alert('button');
+                    form.removeChild(document.getElementById(this.id));
+                    var textoBtn= prompt("Inserta texto del botón","");
+                    var boton= document.createElement('button');
+                    boton.setAttribute("id",tituloFormulario.innerHTML+"-btn1");
+                    boton.setAttribute("type","button");
+                    boton.appendChild(document.createTextNode(textoBtn));
+                    form.appendChild(boton);
                     break;
                 case 'input':
-                    alert('input');
+                    form.removeChild(document.getElementById(this.id));
+                    var input = document.createElement("input");
+                    input.setAttribute("id",tituloFormulario.innerHTML+"-input");
+                    input.setAttribute("placeholder","texto por defecto");
+                    form.appendChild(input);
                     break;
                 case 'Selection':
-                    alert('Selection');
+                   form.removeChild(document.getElementById(this.id));
+                    var opciones= prompt('Cuantas opciones necesitas?','');
+                    var select = document.createElement('select');
+                    for (var i = 0; i < parseInt(opciones); i++) {
+                        var textoOpcion= prompt('Introduce opcion:','');
+                        
+                        var opcion= document.createElement('option');
+                        opcion.appendChild(document.createTextNode(textoOpcion));
+                        select.appendChild(opcion);
+                    }
+                    form.appendChild(select);
                     break;
                 case 'checkBox':
-                    alert('checkBox');
+                    form.removeChild(document.getElementById(this.id));
+                    var cantidad = prompt("Inserta cantidad de checks");
+                    var div = document.createElement("div");
+                    for (var i = 0; i < parseInt(cantidad); i++) {
+                        var check = document.createElement("input");
+                        check.setAttribute("type","checkbox");
+                        div.appendChild(check);
+                        var textoCheck = prompt("inserta texto1","");
+                        var span = document.createElement("span");
+                        span.appendChild(document.createTextNode(textoCheck));
+                        div.appendChild(span);
+                        
+                    }
+                    div.setAttribute("id",tituloFormulario.innerHTML+"-"+"divCheck");
+                    form.appendChild(div);
                     break;
                 case 'RadioButton':
-                    alert('RadioButton');
+                    form.removeChild(document.getElementById(this.id));
+                    var cantidad = prompt("Inserta cantidad de radio button");
+                    var div = document.createElement("div");
+                    for (var i = 0; i < parseInt(cantidad); i++) {
+                        var radio = document.createElement("input");
+                        radio.setAttribute("type","radio");
+                        radio.setAttribute("name","prueba");
+                        div.appendChild(radio);
+                        var textoRadio = prompt("inserta texto1","");
+                        var span = document.createElement("span");
+                        span.appendChild(document.createTextNode(textoRadio));
+                        div.appendChild(span);
+                        
+                    }
+                    div.setAttribute("id",tituloFormulario.innerHTML+"-"+"divRadio");
+                    form.appendChild(div);
                     break;
             }
 
