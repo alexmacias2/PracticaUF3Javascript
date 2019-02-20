@@ -1,5 +1,5 @@
 function paginaCargada() {
-
+    var nombresFormularios = new Array();
     var errorSpan = document.getElementById("formError");
     var nombreFormulario = document.getElementById("inGeneradorFormulario");
     var btnGeneraFormulario = document.getElementById("btnGeneradorFormulario");
@@ -19,7 +19,7 @@ function paginaCargada() {
     }
 
     function generarFormulario() {
-        if (regexp.test(nombreFormulario.value)) {
+        if (regexp.test(nombreFormulario.value) && compruebaNombre(nombreFormulario.value) == false) {
             var div = document.createElement('div');
             var form = document.createElement('form');
             var btnBorrarFormulario = document.createElement('button');
@@ -45,7 +45,7 @@ function paginaCargada() {
 
             btnBorrarFormulario.addEventListener('click', borraFormulario);
         } else {
-            errorSpan.innerHTML = "El nombre del formulario debe empezar por 3 o más letras seguidas de uno o más números"; // plain javascript            
+            errorSpan.innerHTML = "El nombre del formulario debe empezar por 3 o más letras seguidas de uno o más números y no debe estar repetido"; // plain javascript            
         }
 
         function llenarForm() {
@@ -223,5 +223,22 @@ function paginaCargada() {
 
         }
 
+    }
+
+    function compruebaNombre(nombreFormulario) {
+        var nombreFormulario = nombreFormulario;
+        var existe = false;
+
+        for (var i = 0; i < nombresFormularios.length; i++) {
+            if (nombresFormularios[i] == nombreFormulario) {
+                existe = true;
+            }
+        }
+        
+        if (!existe) {
+            nombresFormularios.push(nombreFormulario);
+        }
+        
+        return existe;
     }
 }
