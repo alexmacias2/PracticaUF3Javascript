@@ -109,6 +109,7 @@ function paginaCargada() {
         }
 
         function diseñaCampo() {
+            var saltoLinea = document.createElement("br");
 
             switch (document.getElementById(this.id).value) {
                 case 'button':
@@ -125,6 +126,7 @@ function paginaCargada() {
                     });
                     btnBorrarElemento.setAttribute('type', 'button');
                     btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
+                    form.appendChild(saltoLinea);
                     form.appendChild(boton);
                     form.appendChild(btnBorrarElemento);
 
@@ -141,6 +143,7 @@ function paginaCargada() {
                     });
                     btnBorrarElemento.setAttribute('type', 'button');
                     btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
+                    form.appendChild(saltoLinea);
                     form.appendChild(input);
                     form.appendChild(btnBorrarElemento);
                     break;
@@ -162,6 +165,7 @@ function paginaCargada() {
                     });
                     btnBorrarElemento.setAttribute('type', 'button');
                     btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
+                    form.appendChild(saltoLinea);
                     form.appendChild(select);
                     form.appendChild(btnBorrarElemento);
                     break;
@@ -188,6 +192,7 @@ function paginaCargada() {
                     btnBorrarElemento.setAttribute('type', 'button');
                     btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
                     div.setAttribute("id", tituloFormulario.innerHTML + "-" + "divCheck");
+                    form.appendChild(saltoLinea);
                     form.appendChild(div);
                     form.appendChild(btnBorrarElemento);
                     break;
@@ -222,10 +227,8 @@ function paginaCargada() {
             }
 
         }
-
-    }
-
-    function compruebaNombre(nombreFormulario) {
+        
+        function compruebaNombre(nombreFormulario) {
         var nombreFormulario = nombreFormulario;
         var existe = false;
 
@@ -241,4 +244,10 @@ function paginaCargada() {
         
         return existe;
     }
+
+    }
+
+    
+    
+   
 }

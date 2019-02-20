@@ -15,6 +15,7 @@ margin: 1em;
 form{
     border:1px solid cadetblue;
     padding: 1em;
+    display: block;
 }
 #formError{
  font-size: 1.2em;
@@ -29,3 +30,4 @@ footer {
   color: black;
   text-align: center;
 }
+
