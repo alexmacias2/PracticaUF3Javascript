@@ -119,169 +119,94 @@ function paginaCargada() {
                 case 'button':
                     form.removeChild(document.getElementById(this.id));
                     crearBoton();
-
-                    var btnBorrarElemento = document.createElement('button');
-                    btnBorrarElemento.setAttribute('type', 'button');
-                    btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
-
-                    var btnModificarElemento = document.createElement('button');
-                    btnModificarElemento.setAttribute('type', 'button');
-                    btnModificarElemento.appendChild(document.createTextNode('Modificar'));
-
-                    btnBorrarElemento.addEventListener('click', function () {
-                        form.removeChild(boton);
-                        form.removeChild(btnModificarElemento);
-                        form.removeChild(btnBorrarElemento);
-                        form.removeChild(saltoLinea);
-                    });
-                    btnModificarElemento.addEventListener('click', function () {
-                        form.removeChild(boton);
-                        form.removeChild(btnBorrarElemento);
-                        form.removeChild(btnModificarElemento);
-                        form.removeChild(saltoLinea);
-                        opcionesElementos(1, this.id.split('-', 2));
-                    });
-
-                    form.appendChild(saltoLinea);
-                    form.appendChild(btnBorrarElemento);
-                    form.appendChild(btnModificarElemento);
-
                     break;
                 case 'input':
                     form.removeChild(document.getElementById(this.id));
                     crearInput();
-
-                    var btnBorrarElemento = document.createElement('button');
-                    btnBorrarElemento.setAttribute('type', 'button');
-                    btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
-
-                    var btnModificarElemento = document.createElement('button');
-                    btnModificarElemento.setAttribute('type', 'button');
-                    btnModificarElemento.appendChild(document.createTextNode('Modificar'));
-
-                    btnBorrarElemento.addEventListener('click', function () {
-                        form.removeChild(input);
-                        form.removeChild(btnModificarElemento);
-                        form.removeChild(btnBorrarElemento);
-                        form.removeChild(saltoLinea);
-                    });
-                    btnModificarElemento.addEventListener('click', function () {
-                        form.removeChild(input);
-                        form.removeChild(btnBorrarElemento);
-                        form.removeChild(btnModificarElemento);
-                        form.removeChild(saltoLinea);
-                        opcionesElementos(1, this.id.split('-', 2));
-                    });
-
-                    form.appendChild(saltoLinea);
-                    form.appendChild(btnBorrarElemento);
-                    form.appendChild(btnModificarElemento);
                     break;
                 case 'Selection':
                     form.removeChild(document.getElementById(this.id));
                     crearSelection();
-                    var btnBorrarElemento = document.createElement('button');
-                    btnBorrarElemento.setAttribute('type', 'button');
-                    btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
-
-                    var btnModificarElemento = document.createElement('button');
-                    btnModificarElemento.setAttribute('type', 'button');
-                    btnModificarElemento.appendChild(document.createTextNode('Modificar'));
-
-                    btnBorrarElemento.addEventListener('click', function () {
-                        form.removeChild(select);
-                        form.removeChild(btnModificarElemento);
-                        form.removeChild(btnBorrarElemento);
-                        form.removeChild(saltoLinea);
-                    });
-                    btnModificarElemento.addEventListener('click', function () {
-                        form.removeChild(select);
-                        form.removeChild(btnBorrarElemento);
-                        form.removeChild(btnModificarElemento);
-                        form.removeChild(saltoLinea);
-                        opcionesElementos(1, this.id.split('-', 2));
-                    });
-                    form.appendChild(saltoLinea);
-                    form.appendChild(btnBorrarElemento);
-                    form.appendChild(btnModificarElemento);
                     break;
                 case 'checkBox':
                     form.removeChild(document.getElementById(this.id));
                     crearChecks();
-                    var btnBorrarElemento = document.createElement('button');
-                    btnBorrarElemento.setAttribute('type', 'button');
-                    btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
-
-                    var btnModificarElemento = document.createElement('button');
-                    btnModificarElemento.setAttribute('type', 'button');
-                    btnModificarElemento.appendChild(document.createTextNode('Modificar'));
-
-                    btnBorrarElemento.addEventListener('click', function () {
-                        form.removeChild(divCheck);
-                        form.removeChild(btnModificarElemento);
-                        form.removeChild(btnBorrarElemento);
-                        form.removeChild(saltoLinea);
-                    });
-                    btnModificarElemento.addEventListener('click', function () {
-                        form.removeChild(divCheck);
-                        form.removeChild(btnBorrarElemento);
-                        form.removeChild(btnModificarElemento);
-                        form.removeChild(saltoLinea);
-                        opcionesElementos(1, this.id.split('-', 2));
-                    });
-                    form.appendChild(saltoLinea);
-                    form.appendChild(btnBorrarElemento);
-                    form.appendChild(btnModificarElemento);
                     break;
                 case 'RadioButton':
                     form.removeChild(document.getElementById(this.id));
                     crearRadios();
-                    var btnBorrarElemento = document.createElement('button');
-                    btnBorrarElemento.setAttribute('type', 'button');
-                    btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
-
-                    var btnModificarElemento = document.createElement('button');
-                    btnModificarElemento.setAttribute('type', 'button');
-                    btnModificarElemento.appendChild(document.createTextNode('Modificar'));
-
-                    btnBorrarElemento.addEventListener('click', function () {
-                        form.removeChild(divRadio);
-                        form.removeChild(btnModificarElemento);
-                        form.removeChild(btnBorrarElemento);
-                        form.removeChild(saltoLinea);
-                    });
-                    btnModificarElemento.addEventListener('click', function () {
-                        form.removeChild(divRadio);
-                        form.removeChild(btnBorrarElemento);
-                        form.removeChild(btnModificarElemento);
-                        form.removeChild(saltoLinea);
-                        opcionesElementos(1, this.id.split('-', 2));
-                    });
-                    form.appendChild(saltoLinea);
-                    form.appendChild(btnBorrarElemento);
-                    form.appendChild(btnModificarElemento);
                     break;
             }
 
             function crearBoton() {
                 var textoBtn = prompt("Inserta texto del botón", "");
-                boton = document.createElement('button');
+                var boton = document.createElement('button');
                 boton.setAttribute("id", tituloFormulario.innerHTML + "-btn1");
                 boton.setAttribute("type", "button");
                 boton.appendChild(document.createTextNode(textoBtn));
                 form.appendChild(boton);
+                var btnBorrarElemento = document.createElement('button');
+                btnBorrarElemento.setAttribute('type', 'button');
+                btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
+
+                var btnModificarElemento = document.createElement('button');
+                btnModificarElemento.setAttribute('type', 'button');
+                btnModificarElemento.appendChild(document.createTextNode('Modificar'));
+
+                btnBorrarElemento.addEventListener('click', function () {
+                    form.removeChild(boton);
+                    form.removeChild(btnModificarElemento);
+                    form.removeChild(btnBorrarElemento);
+                    form.removeChild(saltoLinea);
+                });
+                btnModificarElemento.addEventListener('click', function () {
+                    form.removeChild(boton);
+                    form.removeChild(btnBorrarElemento);
+                    form.removeChild(btnModificarElemento);
+                    form.removeChild(saltoLinea);
+                    opcionesElementos(1, this.id.split('-', 2));
+                });
+
+                form.appendChild(saltoLinea);
+                form.appendChild(btnBorrarElemento);
+                form.appendChild(btnModificarElemento);
             }
             function crearInput() {
-                input = document.createElement("input");
+                var input = document.createElement("input");
                 input.setAttribute("id", tituloFormulario.innerHTML + "-input");
                 input.setAttribute("placeholder", "texto por defecto");
-                
                 form.appendChild(input);
+
+                var btnBorrarElemento = document.createElement('button');
+                btnBorrarElemento.setAttribute('type', 'button');
+                btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
+
+                var btnModificarElemento = document.createElement('button');
+                btnModificarElemento.setAttribute('type', 'button');
+                btnModificarElemento.appendChild(document.createTextNode('Modificar'));
+
+                btnBorrarElemento.addEventListener('click', function () {
+                    form.removeChild(input);
+                    form.removeChild(btnModificarElemento);
+                    form.removeChild(btnBorrarElemento);
+                    form.removeChild(saltoLinea);
+                });
+                btnModificarElemento.addEventListener('click', function () {
+                    form.removeChild(input);
+                    form.removeChild(btnBorrarElemento);
+                    form.removeChild(btnModificarElemento);
+                    form.removeChild(saltoLinea);
+                    opcionesElementos(1, this.id.split('-', 2));
+                });
+
+                form.appendChild(saltoLinea);
+                form.appendChild(btnBorrarElemento);
+                form.appendChild(btnModificarElemento);
             }
 
             function crearSelection() {
                 var opciones = prompt('Cuantas opciones necesitas?', '');
-                select = document.createElement('select');
+                var select = document.createElement('select');
                 for (var i = 0; i < parseInt(opciones); i++) {
                     var textoOpcion = prompt('Introduce opcion:', '');
 
@@ -290,11 +215,36 @@ function paginaCargada() {
                     select.appendChild(opcion);
                 }
                 form.appendChild(select);
+
+                var btnBorrarElemento = document.createElement('button');
+                btnBorrarElemento.setAttribute('type', 'button');
+                btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
+
+                var btnModificarElemento = document.createElement('button');
+                btnModificarElemento.setAttribute('type', 'button');
+                btnModificarElemento.appendChild(document.createTextNode('Modificar'));
+
+                btnBorrarElemento.addEventListener('click', function () {
+                    form.removeChild(select);
+                    form.removeChild(btnModificarElemento);
+                    form.removeChild(btnBorrarElemento);
+                    form.removeChild(saltoLinea);
+                });
+                btnModificarElemento.addEventListener('click', function () {
+                    form.removeChild(select);
+                    form.removeChild(btnBorrarElemento);
+                    form.removeChild(btnModificarElemento);
+                    form.removeChild(saltoLinea);
+                    opcionesElementos(1, this.id.split('-', 2));
+                });
+                form.appendChild(saltoLinea);
+                form.appendChild(btnBorrarElemento);
+                form.appendChild(btnModificarElemento);
             }
 
             function crearChecks() {
                 var cantidad = prompt("Inserta cantidad de checks");
-                divCheck = document.createElement("div");
+                var divCheck = document.createElement("div");
                 divCheck.setAttribute("id", tituloFormulario.innerHTML + "-" + "divCheck");
                 for (var i = 0; i < parseInt(cantidad); i++) {
                     var check = document.createElement("input");
@@ -308,11 +258,36 @@ function paginaCargada() {
                     divCheck.appendChild(saltoLinea);
                 }
                 form.appendChild(divCheck);
+
+                var btnBorrarElemento = document.createElement('button');
+                btnBorrarElemento.setAttribute('type', 'button');
+                btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
+
+                var btnModificarElemento = document.createElement('button');
+                btnModificarElemento.setAttribute('type', 'button');
+                btnModificarElemento.appendChild(document.createTextNode('Modificar'));
+
+                btnBorrarElemento.addEventListener('click', function () {
+                    form.removeChild(divCheck);
+                    form.removeChild(btnModificarElemento);
+                    form.removeChild(btnBorrarElemento);
+                    form.removeChild(saltoLinea);
+                });
+                btnModificarElemento.addEventListener('click', function () {
+                    form.removeChild(divCheck);
+                    form.removeChild(btnBorrarElemento);
+                    form.removeChild(btnModificarElemento);
+                    form.removeChild(saltoLinea);
+                    opcionesElementos(1, this.id.split('-', 2));
+                });
+                form.appendChild(saltoLinea);
+                form.appendChild(btnBorrarElemento);
+                form.appendChild(btnModificarElemento);
             }
 
             function crearRadios() {
                 var cantidad = prompt("Inserta cantidad de radio button");
-                divRadio = document.createElement("div");
+                var divRadio = document.createElement("div");
                 divRadio.setAttribute("id", tituloFormulario.innerHTML + "-" + "divRadio");
                 for (var i = 0; i < parseInt(cantidad); i++) {
                     var radio = document.createElement("input");
@@ -328,7 +303,32 @@ function paginaCargada() {
                 }
 
                 form.appendChild(divRadio);
+                var btnBorrarElemento = document.createElement('button');
+                btnBorrarElemento.setAttribute('type', 'button');
+                btnBorrarElemento.appendChild(document.createTextNode('Borrar'));
+
+                var btnModificarElemento = document.createElement('button');
+                btnModificarElemento.setAttribute('type', 'button');
+                btnModificarElemento.appendChild(document.createTextNode('Modificar'));
+
+                btnBorrarElemento.addEventListener('click', function () {
+                    form.removeChild(divRadio);
+                    form.removeChild(btnModificarElemento);
+                    form.removeChild(btnBorrarElemento);
+                    form.removeChild(saltoLinea);
+                });
+                btnModificarElemento.addEventListener('click', function () {
+                    form.removeChild(divRadio);
+                    form.removeChild(btnBorrarElemento);
+                    form.removeChild(btnModificarElemento);
+                    form.removeChild(saltoLinea);
+                    opcionesElementos(1, this.id.split('-', 2));
+                });
+                form.appendChild(saltoLinea);
+                form.appendChild(btnBorrarElemento);
+                form.appendChild(btnModificarElemento);
             }
+
 
 
         }
