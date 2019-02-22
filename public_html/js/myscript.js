@@ -54,6 +54,8 @@ function paginaCargada() {
             inputCantidad.setAttribute('type', 'number');
             inputCantidad.setAttribute('id', tituloFormulario.innerHTML + '-cantidad');
             inputCantidad.setAttribute('class', 'form-control');
+            inputCantidad.setAttribute('min', '1');
+            inputCantidad.setAttribute('max', '4');
             var btnCrearCampos = document.createElement('button');
             btnCrearCampos.appendChild(document.createTextNode("Crear Campos"));
             btnCrearCampos.setAttribute('type', 'button');
@@ -205,11 +207,12 @@ function paginaCargada() {
             }
 
             function crearSelection() {
-                var opciones = prompt('Cuantas opciones necesitas?', '');
+                do {
+                    var opciones = prompt('Cuantas opciones necesitas?(DEBE INTRODUCIR UN NÚMERO)', '');
+                } while (isNaN(opciones))
                 var select = document.createElement('select');
                 for (var i = 0; i < parseInt(opciones); i++) {
                     var textoOpcion = prompt('Introduce opcion:', '');
-
                     var opcion = document.createElement('option');
                     opcion.appendChild(document.createTextNode(textoOpcion));
                     select.appendChild(opcion);
@@ -243,7 +246,9 @@ function paginaCargada() {
             }
 
             function crearChecks() {
-                var cantidad = prompt("Inserta cantidad de checks");
+                do {
+                    var cantidad = prompt("Inserta cantidad de checks (DEBE INTRODUCIR UN NÚMERO)", "");
+                } while (isNaN(cantidad));
                 var divCheck = document.createElement("div");
                 divCheck.setAttribute("id", tituloFormulario.innerHTML + "-" + "divCheck");
                 for (var i = 0; i < parseInt(cantidad); i++) {
@@ -286,7 +291,9 @@ function paginaCargada() {
             }
 
             function crearRadios() {
-                var cantidad = prompt("Inserta cantidad de radio button");
+                   do {
+                    var cantidad = prompt("Inserta cantidad de Opciones(DEBE INTRODUCIR UN NÚMERO)", "");
+                } while (isNaN(cantidad));
                 var divRadio = document.createElement("div");
                 divRadio.setAttribute("id", tituloFormulario.innerHTML + "-" + "divRadio");
                 for (var i = 0; i < parseInt(cantidad); i++) {
