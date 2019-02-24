@@ -1,26 +1,26 @@
-function paginaCargada() {
-    var nombresFormularios = new Array();
-    var errorSpan = document.getElementById("formError");
+function paginaCargada() {//cuando se cargue el html se empezará a ejecutar el código
+    var nombresFormularios = new Array();//guarda los nombres de los formularios para que no se repitan
+    var errorSpan = document.getElementById("formError");//mensaje que saldrá cuando un nombre esté mal formado
     var nombreFormulario = document.getElementById("inGeneradorFormulario");
     var btnGeneraFormulario = document.getElementById("btnGeneradorFormulario");
     var divContenedor = document.getElementById("contenedor");
-    var regexp = /[A-Za-z_çàéèíïóòúüÇÀÉÈÍÏÓÒÚÜ]{3,}\d+/;
+    var regexp = /[A-Za-z_çàéèíïóòúüÇÀÉÈÍÏÓÒÚÜ]{3,}\d+/;//expresión que comprobará los nombres de formulario
 
     btnGeneraFormulario.addEventListener('click', generarFormulario);
     nombreFormulario.addEventListener('input', cambiarBorde);
 
     function cambiarBorde() {
-        if (regexp.test(nombreFormulario.value)) {
+        if (regexp.test(nombreFormulario.value)) {//si el nombre del formulario está bien el borde del inpit es verde
             nombreFormulario.style.borderColor = 'green';
-            errorSpan.innerHTML = "";
+            errorSpan.innerHTML = "";//no aparecerá mensaje de error
         } else {
-            nombreFormulario.style.borderColor = 'red';
+            nombreFormulario.style.borderColor = 'red';//si está mal el borde es rojo
         }
     }
 
     function generarFormulario() {
         if (regexp.test(nombreFormulario.value) && compruebaNombre(nombreFormulario.value) == false) {
-            var div = document.createElement('div');
+            var div = document.createElement('div');//div que contenerá el formulario
             var form = document.createElement('form');
             var btnBorrarFormulario = document.createElement('button');
             btnBorrarFormulario.setAttribute('class', 'btn btn-primary');
@@ -29,27 +29,27 @@ function paginaCargada() {
             var contenidoTitulo = document.createTextNode(nombreFormulario.value);
 
 
-            btnBorrarFormulario.setAttribute('id', nombreFormulario.value + '-borrarFormulario');
+            btnBorrarFormulario.setAttribute('id', nombreFormulario.value + '-borrarFormulario');//formamos el id de los distintos elementos a partir del nombre del formulario
             btnBorrarFormulario.appendChild(contenidoBorrar);
             tituloFormulario.appendChild(contenidoTitulo);
 
 
             form.setAttribute('id', nombreFormulario.value + '-form');
             div.setAttribute('id', nombreFormulario.value + '-container');
-            div.setAttribute('class', 'col-xs-3');
+            div.setAttribute('class', 'col-xs-3');//le damos una clase para aplicarle css
             div.appendChild(tituloFormulario);
             div.appendChild(btnBorrarFormulario);
             div.appendChild(form);
             divContenedor.appendChild(div);
-            llenarForm();
+            llenarForm();//llamamos al método que nos dará la información de los elementos que queremos en el form
 
             btnBorrarFormulario.addEventListener('click', borraFormulario);
         } else {
-            errorSpan.innerHTML = "El nombre del formulario debe empezar por 3 o más letras seguidas de uno o más números y no debe estar repetido"; // plain javascript            
+            errorSpan.innerHTML = "El nombre del formulario debe empezar por 3 o más letras seguidas de uno o más números y no debe estar repetido"; //Error si el nombre está mal            
         }
 
         function llenarForm() {
-            var inputCantidad = document.createElement('input');
+            var inputCantidad = document.createElement('input');//inputa para introducir la cantidad de elementos
             inputCantidad.setAttribute('placeholder', 'inserta cantidad de elementos');
             inputCantidad.setAttribute('type', 'number');
             inputCantidad.setAttribute('id', tituloFormulario.innerHTML + '-cantidad');
@@ -64,7 +64,7 @@ function paginaCargada() {
             form.appendChild(inputCantidad);
             form.appendChild(btnCrearCampos);
 
-            btnCrearCampos.addEventListener('click', creaCampos);
+            btnCrearCampos.addEventListener('click', creaCampos);//evento que llamará al método que creará los campos
         }
 
         function borraFormulario() {
@@ -73,37 +73,37 @@ function paginaCargada() {
         }
 
         function creaCampos() {
-            var idBoton = this.id.split('-', 2);
-            var cantidad = document.getElementById(idBoton[0] + '-' + 'cantidad').value;
+            var idBoton = this.id.split('-', 2);//como el botón tiene el id del form lo podemos identificar separando el id
+            var cantidad = document.getElementById(idBoton[0] + '-' + 'cantidad').value;//cogemos la cantidad de elementos introducida
             document.getElementById(idBoton[0] + '-' + 'cantidad').style.display = 'none';
             document.getElementById(this.id).style.display = 'none';
 
-            opcionesElementos(cantidad, idBoton);
+            opcionesElementos(cantidad, idBoton);//llamamos al método que nos generará el número de campos que queremos pasándole la cantidad introducida
 
         }
 
         function opcionesElementos(cantidad, idBoton) {
-            for (var i = 0; i < cantidad; i++) {
-                var select = document.createElement('select');
+            for (var i = 0; i < cantidad; i++) {//iteramos tantas veces como cantidad de campos en el form queramos que hayan
+                var select = document.createElement('select');//crearemos un select para cada campo en el que se desplegarán los diferentes tipos de campos a crear
                 select.setAttribute('id', idBoton[0] + '-select' + i);
-                select.addEventListener('change', diseñaCampo);
+                select.addEventListener('change', diseñaCampo);//al seleccionar una opción del select nos llamará al método que diseña los campos
                 var selecciona = document.createElement('option');
                 var contenidoSelecciona = document.createTextNode('Selecciona una...');
                 selecciona.appendChild(contenidoSelecciona);
                 var input = document.createElement('option');
-                var contenidoInput = document.createTextNode('input');
+                var contenidoInput = document.createTextNode('input');//podrá ser un input
                 input.appendChild(contenidoInput);
                 var button = document.createElement('option');
-                var contenidoButton = document.createTextNode('button');
+                var contenidoButton = document.createTextNode('button');//un button
                 button.appendChild(contenidoButton);
                 var selection = document.createElement('option');
-                var contenidoSelection = document.createTextNode('Selection');
+                var contenidoSelection = document.createTextNode('Selection');//un selection
                 selection.appendChild(contenidoSelection);
                 var check = document.createElement('option');
-                var contenidoCheck = document.createTextNode('checkBox');
+                var contenidoCheck = document.createTextNode('checkBox');//un checkbox
                 check.appendChild(contenidoCheck);
                 var radiobutton = document.createElement('option');
-                var contenidoRadio = document.createTextNode('RadioButton');
+                var contenidoRadio = document.createTextNode('RadioButton');//o un radio
                 radiobutton.appendChild(contenidoRadio);
                 select.appendChild(selecciona);
                 select.appendChild(input);
@@ -114,10 +114,10 @@ function paginaCargada() {
                 form.appendChild(select);
             }
         }
-        function diseñaCampo() {
+        function diseñaCampo() {//depende de la opción que hayan seleccionado en el select llamaremos al método creador del campo correspondiente
             var saltoLinea = document.createElement("br");
 
-            switch (document.getElementById(this.id).value) {
+            switch (document.getElementById(this.id).value) {//comprobamos el valor seleccionado en el select
                 case 'button':
                     form.removeChild(document.getElementById(this.id));
                     crearBoton();
@@ -140,12 +140,13 @@ function paginaCargada() {
                     break;
             }
 
-            function crearBoton() {
+            function crearBoton() {//método que creará un botón
                 var textoBtn = prompt("Inserta texto del botón", "");
                 var boton = document.createElement('button');
                 boton.setAttribute("id", tituloFormulario.innerHTML + "-btn1");
                 boton.setAttribute("type", "button");
                 boton.appendChild(document.createTextNode(textoBtn));
+                form.appendChild(saltoLinea);
                 form.appendChild(boton);
                 var btnBorrarElemento = document.createElement('button');
                 btnBorrarElemento.setAttribute('type', 'button');
@@ -168,15 +169,14 @@ function paginaCargada() {
                     form.removeChild(saltoLinea);
                     opcionesElementos(1, this.id.split('-', 2));
                 });
-
-                form.appendChild(saltoLinea);
-                form.appendChild(btnBorrarElemento);
-                form.appendChild(btnModificarElemento);
+                form.appendChild(btnBorrarElemento);//añadimos botón para borrar campo
+                form.appendChild(btnModificarElemento);//añadimos botón para editar campo
             }
-            function crearInput() {
+            function crearInput() {//método que creará un input
                 var input = document.createElement("input");
                 input.setAttribute("id", tituloFormulario.innerHTML + "-input");
                 input.setAttribute("placeholder", "texto por defecto");
+                form.appendChild(saltoLinea);
                 form.appendChild(input);
 
                 var btnBorrarElemento = document.createElement('button');
@@ -201,12 +201,11 @@ function paginaCargada() {
                     opcionesElementos(1, this.id.split('-', 2));
                 });
 
-                form.appendChild(saltoLinea);
                 form.appendChild(btnBorrarElemento);
                 form.appendChild(btnModificarElemento);
             }
 
-            function crearSelection() {
+            function crearSelection() {//método que creará un selection
                 do {
                     var opciones = prompt('Cuantas opciones necesitas?(DEBE INTRODUCIR UN NÚMERO)', '');
                 } while (isNaN(opciones))
@@ -217,6 +216,7 @@ function paginaCargada() {
                     opcion.appendChild(document.createTextNode(textoOpcion));
                     select.appendChild(opcion);
                 }
+                form.appendChild(saltoLinea);
                 form.appendChild(select);
 
                 var btnBorrarElemento = document.createElement('button');
@@ -240,12 +240,11 @@ function paginaCargada() {
                     form.removeChild(saltoLinea);
                     opcionesElementos(1, this.id.split('-', 2));
                 });
-                form.appendChild(saltoLinea);
                 form.appendChild(btnBorrarElemento);
                 form.appendChild(btnModificarElemento);
             }
 
-            function crearChecks() {
+            function crearChecks() {//método que creará los check box
                 do {
                     var cantidad = prompt("Inserta cantidad de checks (DEBE INTRODUCIR UN NÚMERO)", "");
                 } while (isNaN(cantidad));
@@ -262,6 +261,7 @@ function paginaCargada() {
                     var saltoLinea = document.createElement("br");
                     divCheck.appendChild(saltoLinea);
                 }
+                form.appendChild(saltoLinea);
                 form.appendChild(divCheck);
 
                 var btnBorrarElemento = document.createElement('button');
@@ -285,13 +285,12 @@ function paginaCargada() {
                     form.removeChild(saltoLinea);
                     opcionesElementos(1, this.id.split('-', 2));
                 });
-                form.appendChild(saltoLinea);
                 form.appendChild(btnBorrarElemento);
                 form.appendChild(btnModificarElemento);
             }
 
-            function crearRadios() {
-                   do {
+            function crearRadios() {//método que creará los radiobutton
+                do {
                     var cantidad = prompt("Inserta cantidad de Opciones(DEBE INTRODUCIR UN NÚMERO)", "");
                 } while (isNaN(cantidad));
                 var divRadio = document.createElement("div");
@@ -308,7 +307,7 @@ function paginaCargada() {
                     var saltoLinea = document.createElement("br");
                     divRadio.appendChild(saltoLinea);
                 }
-
+                form.appendChild(saltoLinea);
                 form.appendChild(divRadio);
                 var btnBorrarElemento = document.createElement('button');
                 btnBorrarElemento.setAttribute('type', 'button');
@@ -331,7 +330,6 @@ function paginaCargada() {
                     form.removeChild(saltoLinea);
                     opcionesElementos(1, this.id.split('-', 2));
                 });
-                form.appendChild(saltoLinea);
                 form.appendChild(btnBorrarElemento);
                 form.appendChild(btnModificarElemento);
             }
@@ -340,7 +338,7 @@ function paginaCargada() {
 
         }
 
-        function compruebaNombre(nombreFormulario) {
+        function compruebaNombre(nombreFormulario) {//método que comprueba que no se repitan los nombres de los formularios
             var nombreFormulario = nombreFormulario;
             var existe = false;
 
@@ -351,10 +349,10 @@ function paginaCargada() {
             }
 
             if (!existe) {
-                nombresFormularios.push(nombreFormulario);
+                nombresFormularios.push(nombreFormulario);//si el nombre no existía lo añadimos al array de nombres
             }
 
-            return existe;
+            return existe;//retornamos si existe o no para posteriormente generar con ese nombre o arrojar mensaje de error
         }
 
     }

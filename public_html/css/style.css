@@ -16,6 +16,7 @@ form{
     border:1px solid cadetblue;
     padding: 1em;
     display: block;
+    width: 400px;
 }
 #formError{
  font-size: 1.2em;
